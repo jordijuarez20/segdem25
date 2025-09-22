@@ -10,8 +10,8 @@ pnpm-debug.log*
 out/
 
 # Env files
-.env*
-!.env.example
+
+
 
 # OS
 .DS_Store

@@ -74,7 +74,7 @@ export default function Page() {
 
         <aside className="welcome">
           <h1>Hola, Bienvenido!</h1>
-          <p>Ingresa  para abrir el flujo del asesor.</p>
+          <p>Bienvenido al cotizador de seguros.</p>
         </aside>
 
         <div className="form-side">

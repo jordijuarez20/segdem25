@@ -16,7 +16,7 @@ declare global {
 export const stripe =
   global._stripe ??
   new Stripe(secretKey, {
-    apiVersion: "2024-06-20",
+    apiVersion: "2025-08-27.basil",
   });
 
 if (process.env.NODE_ENV !== "production") {

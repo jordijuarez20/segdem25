@@ -85,8 +85,8 @@ export default function Page() {
               className="object-contain"
             />
           </div>
-          <h1>Hola, Bienvenido!</h1>
-          <p className="mt-4 text-sm leading-relaxed">
+          <h1 style={{ color: '#ffffff' }}>Hola, Bienvenido!</h1>
+          <p className="mt-4 text-sm leading-relaxed" style={{ color: '#ffffff' }}>
             Accede y lleva la protección de tus clientes al siguiente nivel.
             <br />
             ¡Tu experiencia y confianza hacen la diferencia en cada cotización!

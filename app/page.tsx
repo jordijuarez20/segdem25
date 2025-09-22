@@ -2,6 +2,7 @@
 
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const ANIM_MS = 900;
 
@@ -61,7 +62,9 @@ export default function Page() {
   }
 
   return (
-    <div className="min-h-dvh grid place-items-center px-4 py-10">
+    <div className="min-h-dvh grid place-items-center px-4 py-10" style={{
+      background: 'linear-gradient(135deg, #753bd0 0%, #191514 100%)'
+    }}>
       <section
         className="login-card"
         role="dialog"
@@ -69,12 +72,25 @@ export default function Page() {
         data-sweep={sweep ? 1 : 0}
       >
         <div className="capsule-wrap" aria-hidden="true">
-          <div className="capsule" />
+          <div className="capsule" style={{ background: '#7C3AED' }} />
         </div>
 
         <aside className="welcome">
+          <div className="mb-6 flex justify-center">
+            <Image
+              src="/imagen/img1.png"
+              alt="Logo"
+              width={120}
+              height={120}
+              className="object-contain"
+            />
+          </div>
           <h1>Hola, Bienvenido!</h1>
-          <p>Bienvenido al cotizador de seguros.</p>
+          <p className="mt-4 text-sm leading-relaxed">
+            Accede y lleva la protección de tus clientes al siguiente nivel.
+            <br />
+            ¡Tu experiencia y confianza hacen la diferencia en cada cotización!
+          </p>
         </aside>
 
         <div className="form-side">
@@ -116,7 +132,11 @@ export default function Page() {
               <p className="text-xs text-neutral-500">Demo: cualquier usuario y contraseña válidos funcionan.</p>
             )}
 
-            <button type="submit" className="btn">
+            <button 
+              type="submit" 
+              className="w-full h-12 rounded-xl font-bold text-white shadow-lg transition active:translate-y-px focus:outline-none focus:ring-4"
+              style={{ background: '#191514' }}
+            >
               Entrar
             </button>
           </form>

@@ -73,8 +73,8 @@ export default function Page() {
         </div>
 
         <aside className="welcome">
-          <h1>Hello, Welcome!</h1>
-          <p>Ingresa con tus credenciales para abrir el flujo del asesor.</p>
+          <h1>Hola, Bienvenido!</h1>
+          <p>Ingresa  para abrir el flujo del asesor.</p>
         </aside>
 
         <div className="form-side">

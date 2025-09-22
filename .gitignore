@@ -1,0 +1,39 @@
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Next.js
+.next/
+out/
+
+# Env files
+.env*
+!.env.example
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
+
+# Logs
+logs
+*.log
+
+# Build
+build/
+dist/
+
+# Coverage
+coverage/
+
+# Misc
+*.swp
+*.swo
+
+# Optional: Ignore local development files
+*.local

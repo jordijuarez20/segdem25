@@ -294,7 +294,7 @@ export default function InsuranceFlowDemo({
 }: FlowProps) {
   // Paso actual
   const [step, setStep] = useState<number>(Math.max(0, Math.min(5, startStep)));
-  // Tu versión pedía "vida" por defecto
+  // Default product
   const [productType, setProductType] = useState<ProductType>("vida");
 
   // Checklist por producto (editable)
@@ -648,19 +648,19 @@ export default function InsuranceFlowDemo({
   return (
     <div className="min-h-screen bg-neutral-50 text-neutral-900">
       <header className="sticky top-0 z-30 backdrop-blur bg-white/80 border-b border-neutral-200">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center gap-3">
-          <div className="font-black text-xl tracking-tight">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 py-3 sm:py-4 flex items-center gap-3">
+          <div className="font-black text-base sm:text-lg md:text-xl tracking-tight">
             Seguros Demo <span className="text-[#7494ec]">| Flujo Completo</span>
           </div>
-          <div className="ml-auto text-sm text-neutral-600">
+          <div className="ml-auto text-xs sm:text-sm text-neutral-600">
             Asesor: <b>{advisorName}</b>
           </div>
         </div>
       </header>
 
       {/* Barra de progreso clickeable */}
-      <nav aria-label="Progreso" className="max-w-7xl mx-auto px-4 pt-4">
-        <ol className="flex flex-wrap gap-2 text-xs md:text-sm">
+      <nav aria-label="Progreso" className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 pt-3 sm:pt-4">
+        <ol className="flex flex-wrap gap-2 text-[11px] sm:text-xs md:text-sm">
           {stepLabels.map((label, idx) => {
             const state =
               step === idx
@@ -673,7 +673,7 @@ export default function InsuranceFlowDemo({
                 <button
                   type="button"
                   onClick={() => setStep(idx)}
-                  className={`px-3 py-1 rounded-full border transition ${state}`}
+                  className={`px-2.5 sm:px-3 py-1.5 rounded-full border transition ${state}`}
                 >
                   {idx + 1}. {label}
                 </button>
@@ -683,14 +683,14 @@ export default function InsuranceFlowDemo({
         </ol>
       </nav>
 
-      <main className="max-w-7xl mx-auto px-4 py-6 space-y-6">
+      <main className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 py-4 sm:py-6 space-y-4 sm:space-y-6">
         {/* PASO 0: Producto arriba, Cliente abajo */}
         {step === 0 && (
           <section className="grid gap-4 lg:grid-cols-[1.35fr,1fr]">
-            <div className="rounded-2xl border border-neutral-200 bg-white shadow-sm p-6 space-y-6">
+            <div className="rounded-2xl border border-neutral-200 bg-white shadow-sm p-4 sm:p-6 space-y-4 sm:space-y-6">
               {/* Producto a cotizar (ARRIBA) */}
               <div>
-                <h2 className="font-bold text-lg mb-2">Producto a cotizar</h2>
+                <h2 className="font-bold text-base sm:text-lg mb-2">Producto a cotizar</h2>
                 <div className="flex flex-wrap gap-2">
                   {(
                     [
@@ -701,7 +701,7 @@ export default function InsuranceFlowDemo({
                   ).map((option) => (
                     <button
                       key={option.type}
-                      className={`rounded-xl px-4 py-2 border text-sm font-semibold ${
+                      className={`rounded-xl px-3 sm:px-4 py-2 border text-sm font-semibold ${
                         productType === option.type
                           ? "bg-[#7494ec] text-white border-[#7494ec]"
                           : "bg-white text-neutral-900 border-neutral-300 hover:bg-neutral-50"
@@ -717,12 +717,12 @@ export default function InsuranceFlowDemo({
 
               {/* Datos del cliente (ABAJO) */}
               <div>
-                <h2 className="font-bold text-lg mb-2">Informacion del cliente</h2>
+                <h2 className="font-bold text-base sm:text-lg mb-2">Informacion del cliente</h2>
                 <div className="grid md:grid-cols-2 gap-3">
                   <label className="text-sm font-medium">
                     Nombre completo
                     <input
-                      className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-2"
+                      className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-3 sm:py-2"
                       value={client.nombre}
                       onChange={(e) => setClient({ ...client, nombre: e.target.value })}
                     />
@@ -730,7 +730,7 @@ export default function InsuranceFlowDemo({
                   <label className="text-sm font-medium">
                     Email
                     <input
-                      className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-2"
+                      className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-3 sm:py-2"
                       value={client.email}
                       onChange={(e) => setClient({ ...client, email: e.target.value })}
                     />
@@ -738,7 +738,7 @@ export default function InsuranceFlowDemo({
                   <label className="text-sm font-medium">
                     Telefono
                     <input
-                      className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-2"
+                      className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-3 sm:py-2"
                       value={client.telefono}
                       onChange={(e) => setClient({ ...client, telefono: e.target.value })}
                     />
@@ -746,7 +746,7 @@ export default function InsuranceFlowDemo({
                   <label className="text-sm font-medium">
                     Domicilio
                     <input
-                      className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-2"
+                      className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-3 sm:py-2"
                       value={client.domicilio}
                       onChange={(e) => setClient({ ...client, domicilio: e.target.value })}
                     />
@@ -754,7 +754,7 @@ export default function InsuranceFlowDemo({
                   <label className="text-sm font-medium">
                     CURP
                     <input
-                      className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-2"
+                      className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-3 sm:py-2"
                       value={client.curp}
                       onChange={(e) => setClient({ ...client, curp: e.target.value })}
                     />
@@ -762,7 +762,7 @@ export default function InsuranceFlowDemo({
                   <label className="text-sm font-medium">
                     RFC
                     <input
-                      className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-2"
+                      className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-3 sm:py-2"
                       value={client.rfc}
                       onChange={(e) => setClient({ ...client, rfc: e.target.value })}
                     />
@@ -771,7 +771,7 @@ export default function InsuranceFlowDemo({
                 <label className="text-sm font-medium block mt-4">
                   Prioridades (separadas por coma)
                   <input
-                    className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-2"
+                    className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-3 sm:py-2"
                     value={prioridadesInput}
                     onChange={(event) =>
                       setClient({
@@ -797,10 +797,10 @@ export default function InsuranceFlowDemo({
             </div>
 
             {/* Panel derecho (datos del riesgo) */}
-            <div className="rounded-2xl border border-neutral-200 bg-white shadow-sm p-6">
+            <div className="rounded-2xl border border-neutral-200 bg-white shadow-sm p-4 sm:p-6">
               {productType === "auto" && (
                 <>
-                  <h2 className="font-bold text-lg mb-2">Datos del vehiculo</h2>
+                  <h2 className="font-bold text-base sm:text-lg mb-2">Datos del vehiculo</h2>
                   {(
                     [
                       ["Marca", "marca"],
@@ -816,7 +816,7 @@ export default function InsuranceFlowDemo({
                     <div key={key} className="mt-2">
                       <label className="text-sm font-medium">{label}</label>
                       <input
-                        className="mt-1 w-full rounded-xl border border-transparent bg-[#f1f3f8] px-4 py-3 text-lg font-semibold text-neutral-800 placeholder:text-neutral-500 tracking-wide outline-none focus:ring-4 transition box-shadow"
+                        className="mt-1 w-full rounded-xl border border-transparent bg-[#f1f3f8] px-4 py-3 text-base sm:text-lg font-semibold text-neutral-800 placeholder:text-neutral-500 tracking-wide outline-none focus:ring-4 transition box-shadow"
                         style={{ boxShadow: "none" }}
                         value={(vehicle as Record<string, string | number>)[key]}
                         onChange={(event) =>
@@ -838,7 +838,7 @@ export default function InsuranceFlowDemo({
 
               {productType === "gmm" && (
                 <>
-                  <h2 className="font-bold text-lg mb-2">Datos de salud</h2>
+                  <h2 className="font-bold text-base sm:text-lg mb-2">Datos de salud</h2>
                   {(
                     [
                       ["Edad", "edad"],
@@ -850,7 +850,7 @@ export default function InsuranceFlowDemo({
                     <div key={key} className="mt-2">
                       <label className="text-sm font-medium">{label}</label>
                       <input
-                        className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#7494ec]"
+                        className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-3 sm:py-2 focus:outline-none focus:ring-2 focus:ring-[#7494ec]"
                         value={(health as Record<string, string | number>)[key]}
                         onChange={(event) =>
                           setHealth({
@@ -866,7 +866,7 @@ export default function InsuranceFlowDemo({
 
               {productType === "vida" && (
                 <>
-                  <h2 className="font-bold text-lg mb-2">Datos de vida</h2>
+                  <h2 className="font-bold text-base sm:text-lg mb-2">Datos de vida</h2>
                   {(
                     [
                       ["Edad", "edad"],
@@ -879,7 +879,7 @@ export default function InsuranceFlowDemo({
                     <div key={key} className="mt-2">
                       <label className="text-sm font-medium">{label}</label>
                       <input
-                        className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#7494ec]"
+                        className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-3 sm:py-2 focus:outline-none focus:ring-2 focus:ring-[#7494ec]"
                         value={(life as Record<string, string | number>)[key]}
                         onChange={(event) =>
                           setLife({
@@ -899,22 +899,22 @@ export default function InsuranceFlowDemo({
         {/* PASO 1: Comparación */}
         {step === 1 && (
           <section>
-            <div className="rounded-2xl border border-neutral-200 bg-white shadow-sm p-4 mb-4 flex items-center gap-3">
+            <div className="rounded-2xl border border-neutral-200 bg-white shadow-sm p-3 sm:p-4 mb-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
               <label className="sr-only" htmlFor="buscar">
                 Buscar plan
               </label>
               <input
                 id="buscar"
-                className="w-72 rounded-xl border border-transparent bg-[#f1f3f8] px-4 py-3 text-[16px] text-neutral-800 font-medium outline-none focus:ring-4 transition box-shadow"
+                className="w-full sm:w-80 rounded-xl border border-transparent bg-[#f1f3f8] px-4 py-3 text-[16px] text-neutral-800 font-medium outline-none focus:ring-4 transition box-shadow"
                 style={{ boxShadow: "none" }}
                 placeholder="Buscar aseguradora o plan"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
               />
-              <span className="text-sm text-neutral-600">Selecciona 2 o 3 para comparar</span>
+              <span className="text-xs sm:text-sm text-neutral-600">Selecciona 2 o 3 para comparar</span>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-4 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
               {filteredPolicies.map((policy) => (
                 <article
                   key={policy.id}
@@ -974,19 +974,21 @@ export default function InsuranceFlowDemo({
               ))}
             </div>
 
-            {selected.length >= 1 && (
-              <div className="rounded-2xl border border-neutral-200 bg-white shadow-sm overflow-hidden">
-                <header className="px-4 py-3 border-b bg-neutral-50 flex items-center gap-3">
-                  <h2 className="font-bold">Comparativa (unidades reales)</h2>
-                  <span className="text-xs text-neutral-500">Valores como los reporta cada poliza</span>
-                </header>
+            <div className="rounded-2xl border border-neutral-200 bg-white shadow-sm overflow-hidden">
+              <header className="px-4 py-3 border-b bg-neutral-50 flex items-center gap-3">
+                <h2 className="font-bold text-sm sm:text-base">Comparativa (unidades reales)</h2>
+                <span className="text-xs text-neutral-500">Valores como los reporta cada poliza</span>
+              </header>
+
+              {/* contenedor con scroll y pista de deslizamiento */}
+              <div className="relative">
                 <div className="overflow-x-auto">
-                  <table className="min-w-full text-sm">
+                  <table className="min-w-full text-xs sm:text-sm">
                     <thead>
                       <tr className="bg-neutral-50 text-neutral-600">
-                        <th className="text-left px-4 py-3 w-72">Criterio</th>
+                        <th className="text-left px-4 py-3 w-64 sm:w-72">Criterio</th>
                         {selected.map((policy) => (
-                          <th key={policy.id} className="text-left px-4 py-3 w-64">
+                          <th key={policy.id} className="text-left px-4 py-3 w-56 sm:w-64">
                             {policy.brand} - {policy.name}
                           </th>
                         ))}
@@ -997,7 +999,7 @@ export default function InsuranceFlowDemo({
                         <tr key={key} className="border-t">
                           <td className="align-top px-4 py-3">
                             <div className="font-semibold">{currentCriteria[key].label}</div>
-                            <div className="text-neutral-500 text-xs">{currentCriteria[key].help}</div>
+                            <div className="text-neutral-500 text-[11px] sm:text-xs">{currentCriteria[key].help}</div>
                           </td>
                           {selected.map((policy) => (
                             <td key={policy.id} className="align-top px-4 py-3">
@@ -1012,8 +1014,10 @@ export default function InsuranceFlowDemo({
                     </tbody>
                   </table>
                 </div>
+                {/* Fade lateral para hint de scroll */}
+                <div className="pointer-events-none absolute inset-y-0 right-0 w-6 bg-gradient-to-l from-white to-transparent hidden sm:block" />
               </div>
-            )}
+            </div>
 
             <div className="mt-4 flex items-center gap-3">
               <button onClick={prev} className="rounded-xl px-4 py-2 border border-neutral-300 hover:bg-neutral-50">
@@ -1032,11 +1036,11 @@ export default function InsuranceFlowDemo({
 
         {/* PASO 2: Solicitud */}
         {step === 2 && (
-          <section className="grid md:grid-cols-2 gap-4">
-            <div className="rounded-2xl border border-neutral-200 bg-white shadow-sm p-6">
-              <h2 className="font-bold text-lg mb-2">Plan elegido</h2>
+          <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="rounded-2xl border border-neutral-200 bg-white shadow-sm p-4 sm:p-6">
+              <h2 className="font-bold text-base sm:text-lg mb-2">Plan elegido</h2>
               <select
-                className="w-full rounded-xl border border-neutral-300 px-3 py-2"
+                className="w-full rounded-xl border border-neutral-300 px-3 py-3 sm:py-2"
                 value={chosenPolicyId ?? ""}
                 onChange={(event) => setChosenPolicyId(event.target.value)}
               >
@@ -1059,7 +1063,7 @@ export default function InsuranceFlowDemo({
                 <div key={key} className="mt-2">
                   <label className="text-sm font-medium">{label}</label>
                   <input
-                    className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-2"
+                    className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-3 sm:py-2"
                     value={(billing as Record<string, string>)[key]}
                     onChange={(event) => setBilling({ ...billing, [key]: event.target.value })}
                   />
@@ -1068,12 +1072,12 @@ export default function InsuranceFlowDemo({
             </div>
 
             {/* Checklist editable */}
-            <div className="rounded-2xl border border-neutral-200 bg-white shadow-sm p-6">
-              <h2 className="font-bold text-lg mb-2">Checklist de documentos ({productType.toUpperCase()})</h2>
+            <div className="rounded-2xl border border-neutral-200 bg-white shadow-sm p-4 sm:p-6">
+              <h2 className="font-bold text-base sm:text-lg mb-2">Checklist de documentos ({productType.toUpperCase()})</h2>
 
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {defaultChecklist[productType].map((item, i) => (
-                  <div key={`def-${i}`} className="flex items-center justify-between p-3 border border-neutral-200 rounded-lg">
+                  <div key={`def-${i}`} className="flex flex-col sm:flex-row gap-2 sm:gap-4 sm:items-center justify-between p-3 border border-neutral-200 rounded-lg">
                     <span className="text-sm text-neutral-700">{item}</span>
                     <div className="flex items-center gap-2">
                       {uploadedFiles[item] ? (
@@ -1112,7 +1116,7 @@ export default function InsuranceFlowDemo({
                   </div>
                 ))}
                 {currentDocs.map((doc, i) => (
-                  <div key={`extra-${i}`} className="flex items-center justify-between p-3 border border-neutral-200 rounded-lg">
+                  <div key={`extra-${i}`} className="flex flex-col sm:flex-row gap-2 sm:gap-4 sm:items-center justify-between p-3 border border-neutral-200 rounded-lg">
                     <span className="text-sm text-neutral-700">{doc}</span>
                     <div className="flex items-center gap-2">
                       {uploadedFiles[doc] ? (
@@ -1124,7 +1128,7 @@ export default function InsuranceFlowDemo({
                             onClick={() => removeFile(doc)}
                             className="text-xs text-red-600 hover:text-red-800"
                             type="button"
-                            aria-label="Eliminar archivo"
+                            aria-label="Eliminar"
                           >
                             ✕
                           </button>
@@ -1162,7 +1166,7 @@ export default function InsuranceFlowDemo({
 
               <div className="mt-3 flex gap-2">
                 <input
-                  className="flex-1 rounded-xl border border-neutral-300 px-3 py-2"
+                  className="flex-1 rounded-xl border border-neutral-300 px-3 py-3 sm:py-2"
                   placeholder="Agregar documento (ej. Identificación del titular adicional)..."
                   value={currentNewDoc}
                   onChange={(e) => setNewDoc((prev) => ({ ...prev, [productType]: e.target.value }))}
@@ -1195,13 +1199,13 @@ export default function InsuranceFlowDemo({
 
         {/* PASO 3: Cotización */}
         {step === 3 && (
-          <section className="grid md:grid-cols-2 gap-4">
-            <div className="rounded-2xl border border-neutral-200 bg-white shadow-sm p-6">
-              <h2 className="font-bold text-lg mb-2">Previsualizacion rapida</h2>
+          <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="rounded-2xl border border-neutral-200 bg-white shadow-sm p-4 sm:p-6">
+              <h2 className="font-bold text-base sm:text-lg mb-2">Previsualizacion rapida</h2>
               <p className="text-sm text-neutral-700">
                 El PDF incluira datos del cliente, producto seleccionado, comparativa, plan elegido y consentimientos.
               </p>
-              <div className="mt-4 flex items-center gap-3">
+              <div className="mt-4 flex flex-wrap items-center gap-3">
                 <button
                   onClick={generatePDF}
                   className="rounded-xl px-4 py-2 bg-[#7494ec] text-white font-semibold hover:bg-[#5a7be0]"
@@ -1227,15 +1231,15 @@ export default function InsuranceFlowDemo({
                 <button
                   onClick={next}
                   disabled={!generatedPDFUrl}
-                  className="rounded-xl px-4 py-2 bg-indigo-600 text-white font-semibold hover:bg-indigo-700 disabled:opacity-50"
+                  className="rounded-2xl px-4 py-2 bg-indigo-600 text-white font-semibold hover:bg-indigo-700 disabled:opacity-50"
                 >
                   Ir a envio
                 </button>
               </div>
             </div>
 
-            <div className="rounded-2xl border border-neutral-200 bg-white shadow-sm p-6">
-              <h2 className="font-bold text-lg mb-2">Resumen del plan elegido</h2>
+            <div className="rounded-2xl border border-neutral-200 bg-white shadow-sm p-4 sm:p-6">
+              <h2 className="font-bold text-base sm:text-lg mb-2">Resumen del plan elegido</h2>
               {chosenPolicy ? (
                 <div>
                   <div className="font-semibold">
@@ -1263,8 +1267,8 @@ export default function InsuranceFlowDemo({
 
         {/* PASO 4: Emisión */}
         {step === 4 && (
-          <section className="max-w-3xl mx-auto rounded-2xl border border-neutral-200 bg-white shadow-sm p-6">
-            <h2 className="font-bold text-lg mb-2">Emisión de expediente a aseguradora (simulado)</h2>
+          <section className="max-w-3xl mx-auto rounded-2xl border border-neutral-200 bg-white shadow-sm p-4 sm:p-6">
+            <h2 className="font-bold text-base sm:text-lg mb-2">Emisión de expediente a aseguradora (simulado)</h2>
             <p className="text-neutral-700 text-sm">
               Se enviará el PDF generado más los metadatos de la solicitud. Revisa el desglose antes de enviar:
             </p>
@@ -1340,7 +1344,7 @@ export default function InsuranceFlowDemo({
             <div className="mt-3">
               <label className="text-sm font-medium">Aseguradora destino</label>
               <select
-                className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-2"
+                className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-3 sm:py-2"
                 value={chosenPolicyId ?? ""}
                 onChange={(event) => setChosenPolicyId(event.target.value)}
               >
@@ -1386,7 +1390,7 @@ export default function InsuranceFlowDemo({
         )}
       </main>
 
-      <footer className="py-10 text-center text-sm text-neutral-500">
+      <footer className="py-10 px-[env(safe-area-inset-left)] text-center text-sm text-neutral-500">
         <p>* DEMO con datos ficticios. Para produccion, integra APIs y flujos de firma electronica.</p>
       </footer>
     </div>

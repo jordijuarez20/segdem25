@@ -1164,21 +1164,7 @@ export default function InsuranceFlowDemo({
                 ))}
               </div>
 
-              <div className="mt-3 flex gap-2">
-                <input
-                  className="flex-1 rounded-xl border border-neutral-300 px-3 py-3 sm:py-2"
-                  placeholder="Agregar documento (ej. Identificación del titular adicional)..."
-                  value={currentNewDoc}
-                  onChange={(e) => setNewDoc((prev) => ({ ...prev, [productType]: e.target.value }))}
-                />
-                <button
-                  className="rounded-xl px-3 py-2 bg-[#7494ec] text-white text-sm font-semibold hover:bg-[#5a7be0]"
-                  type="button"
-                  onClick={addDoc}
-                >
-                  Agregar
-                </button>
-              </div>
+
 
               <p className="text-xs text-neutral-500 mt-2">*Lista demostrativa; añade o quita documentos según la aseguradora.</p>
 

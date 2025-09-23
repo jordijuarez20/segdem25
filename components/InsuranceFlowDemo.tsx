@@ -1197,18 +1197,49 @@ export default function InsuranceFlowDemo({
           </section>
         )}
 
-        {/* PASO 3: Cotización */}
+        {/* PASO 3: Cotización (RESPONSIVO) */}
         {step === 3 && (
-          <section className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="rounded-2xl border border-neutral-200 bg-white shadow-sm p-4 sm:p-6">
+          <section className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+            {/* Resumen (1ro en mobile, 2do en desktop) */}
+            <div className="order-1 lg:order-2 rounded-2xl border border-neutral-200 bg-white shadow-sm p-4 sm:p-6 overflow-hidden">
+              <h2 className="font-bold text-base sm:text-lg mb-2">Resumen del plan elegido</h2>
+              {chosenPolicy ? (
+                <div className="break-words">
+                  <div className="font-semibold truncate">
+                    {chosenPolicy.brand} - {chosenPolicy.name}
+                  </div>
+                  <div className="text-sm text-neutral-600">
+                    Anual: <b>{formatMoney(annualCost(chosenPolicy))}</b> - Deducible:{" "}
+                    <b>{chosenPolicy.features.deductible ?? "N/D"}%</b>
+                  </div>
+                  <ul className="mt-3 text-sm text-neutral-700 space-y-1">
+                    {Object.keys(currentCriteria).map((key) => (
+                      <li key={key} className="flex gap-2">
+                        <span className="shrink-0 text-neutral-600">{currentCriteria[key].label}:</span>
+                        <span className="font-medium break-words">
+                          {formatValue(currentCriteria, key, chosenPolicy.features[key])}
+                          {extraSuffix(productType, key)}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : (
+                <p className="text-sm text-neutral-600">Selecciona una poliza para ver el resumen.</p>
+              )}
+            </div>
+
+            {/* Previsualización (2do en mobile, 1ro en desktop) */}
+            <div className="order-2 lg:order-1 rounded-2xl border border-neutral-200 bg-white shadow-sm p-4 sm:p-6">
               <h2 className="font-bold text-base sm:text-lg mb-2">Previsualizacion rapida</h2>
               <p className="text-sm text-neutral-700">
                 El PDF incluira datos del cliente, producto seleccionado, comparativa, plan elegido y consentimientos.
               </p>
-              <div className="mt-4 flex flex-wrap items-center gap-3">
+
+              <div className="mt-4 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
                 <button
                   onClick={generatePDF}
-                  className="rounded-xl px-4 py-2 bg-[#7494ec] text-white font-semibold hover:bg-[#5a7be0]"
+                  className="w-full sm:w-auto rounded-xl px-4 py-2 bg-[#7494ec] text-white font-semibold hover:bg-[#5a7be0]"
                 >
                   Generar PDF
                 </button>
@@ -1217,14 +1248,17 @@ export default function InsuranceFlowDemo({
                     href={generatedPDFUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="rounded-xl px-4 py-2 border border-neutral-300 hover:bg-neutral-50"
+                    className="w-full sm:w-auto text-center rounded-xl px-4 py-2 border border-neutral-300 hover:bg-neutral-50"
                   >
                     Abrir o descargar PDF
                   </a>
                 )}
               </div>
+
               <p className="text-xs text-neutral-500 mt-2">*Generado con jsPDF en el navegador.</p>
-              <div className="mt-4 flex gap-3">
+
+              {/* Acciones en desktop/tablet */}
+              <div className="mt-4 hidden sm:flex gap-3">
                 <button onClick={prev} className="rounded-xl px-4 py-2 border border-neutral-300 hover:bg-neutral-50">
                   Atras
                 </button>
@@ -1238,30 +1272,25 @@ export default function InsuranceFlowDemo({
               </div>
             </div>
 
-            <div className="rounded-2xl border border-neutral-200 bg-white shadow-sm p-4 sm:p-6">
-              <h2 className="font-bold text-base sm:text-lg mb-2">Resumen del plan elegido</h2>
-              {chosenPolicy ? (
-                <div>
-                  <div className="font-semibold">
-                    {chosenPolicy.brand} - {chosenPolicy.name}
-                  </div>
-                  <div className="text-sm text-neutral-600">
-                    Anual: <b>{formatMoney(annualCost(chosenPolicy))}</b> - Deducible:{" "}
-                    <b>{chosenPolicy.features.deductible ?? "N/D"}%</b>
-                  </div>
-                  <ul className="mt-3 text-sm text-neutral-700 space-y-1">
-                    {Object.keys(currentCriteria).map((key) => (
-                      <li key={key}>
-                        {currentCriteria[key].label}: {formatValue(currentCriteria, key, chosenPolicy.features[key])}
-                        {extraSuffix(productType, key)}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : (
-                <p className="text-sm text-neutral-600">Selecciona una poliza para ver el resumen.</p>
-              )}
+            {/* Barra inferior sticky solo en móvil */}
+            <div className="sm:hidden fixed bottom-0 inset-x-0 z-20 bg-white/95 backdrop-blur border-t border-neutral-200 px-3 py-3">
+              <div className="max-w-7xl mx-auto flex gap-3">
+                <button
+                  onClick={prev}
+                  className="w-1/2 rounded-xl px-4 py-3 border border-neutral-300 text-neutral-800"
+                >
+                  Atras
+                </button>
+                <button
+                  onClick={next}
+                  disabled={!generatedPDFUrl}
+                  className="w-1/2 rounded-xl px-4 py-3 bg-indigo-600 text-white font-semibold disabled:opacity-50"
+                >
+                  Ir a envio
+                </button>
+              </div>
             </div>
+            {/* ——— Fin barra sticky ——— */}
           </section>
         )}
 

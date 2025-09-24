@@ -650,7 +650,7 @@ export default function InsuranceFlowDemo({
       <header className="sticky top-0 z-30 backdrop-blur bg-white/80 border-b border-neutral-200">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 py-3 sm:py-4 flex items-center gap-3">
           <div className="font-black text-base sm:text-lg md:text-xl tracking-tight">
-            Seguros Demo <span className="text-[#7494ec]">| Flujo Completo</span>
+            Seguros Demo <span className="text-[#753bd0]">| Flujo Completo</span>
           </div>
           <div className="ml-auto text-xs sm:text-sm text-neutral-600">
             Asesor: <b>{advisorName}</b>
@@ -664,9 +664,9 @@ export default function InsuranceFlowDemo({
           {stepLabels.map((label, idx) => {
             const state =
               step === idx
-                ? "bg-[#7494ec] text-white border-[#7494ec]"
+                ? "bg-[#753bd0] text-white border-[#753bd0]"
                 : step > idx
-                ? "bg-[#e3edff] text-[#7494ec] border-[#b3cdfa]"
+                ? "bg-[#ff6ef3]/10 text-[#753bd0] border-[#ff6ef3]/30"
                 : "bg-white text-neutral-600 border-neutral-200";
             return (
               <li key={label}>
@@ -703,7 +703,7 @@ export default function InsuranceFlowDemo({
                       key={option.type}
                       className={`rounded-xl px-3 sm:px-4 py-2 border text-sm font-semibold ${
                         productType === option.type
-                          ? "bg-[#7494ec] text-white border-[#7494ec]"
+                          ? "bg-[#753bd0] text-white border-[#753bd0]"
                           : "bg-white text-neutral-900 border-neutral-300 hover:bg-neutral-50"
                       }`}
                       onClick={() => setProductType(option.type)}
@@ -788,7 +788,7 @@ export default function InsuranceFlowDemo({
 
               <div className="flex flex-wrap gap-3 justify-end">
                 <button
-                  className="rounded-xl px-4 py-2 bg-[#7494ec] text-white font-semibold hover:bg-[#5a7be0]"
+                  className="rounded-xl px-4 py-2 bg-[#753bd0] text-white font-semibold hover:bg-[#5f2fab]"
                   onClick={next}
                 >
                   Continuar a comparacion
@@ -850,7 +850,7 @@ export default function InsuranceFlowDemo({
                     <div key={key} className="mt-2">
                       <label className="text-sm font-medium">{label}</label>
                       <input
-                        className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-3 sm:py-2 focus:outline-none focus:ring-2 focus:ring-[#7494ec]"
+                        className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-3 sm:py-2 focus:outline-none focus:ring-2 focus:ring-[#753bd0]"
                         value={(health as Record<string, string | number>)[key]}
                         onChange={(event) =>
                           setHealth({
@@ -879,7 +879,7 @@ export default function InsuranceFlowDemo({
                     <div key={key} className="mt-2">
                       <label className="text-sm font-medium">{label}</label>
                       <input
-                        className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-3 sm:py-2 focus:outline-none focus:ring-2 focus:ring-[#7494ec]"
+                        className="mt-1 w-full rounded-xl border border-neutral-300 px-3 py-3 sm:py-2 focus:outline-none focus:ring-2 focus:ring-[#753bd0]"
                         value={(life as Record<string, string | number>)[key]}
                         onChange={(event) =>
                           setLife({
@@ -920,7 +920,7 @@ export default function InsuranceFlowDemo({
                   key={policy.id}
                   className={`rounded-2xl border ${
                     selectedIds.includes(policy.id)
-                      ? "border-[#7494ec] ring-2 ring-[#e3edff]"
+                      ? "border-[#753bd0] ring-2 ring-[#ff6ef3]/20"
                       : "border-neutral-200"
                   } bg-white shadow-sm p-4`}
                 >
@@ -937,7 +937,7 @@ export default function InsuranceFlowDemo({
                     <button
                       className={`shrink-0 rounded-xl px-3 py-2 text-sm font-semibold border focus:outline-none focus:ring-2 ${
                         selectedIds.includes(policy.id)
-                          ? "bg-[#7494ec] text-white border-[#7494ec] hover:bg-[#5a7be0]"
+                          ? "bg-[#753bd0] text-white border-[#753bd0] hover:bg-[#5f2fab]"
                           : "bg-white text-neutral-900 border-neutral-300 hover:bg-neutral-50"
                       }`}
                       onClick={() => toggleSelect(policy.id)}
@@ -1026,7 +1026,7 @@ export default function InsuranceFlowDemo({
               <button
                 disabled={!selected.length}
                 onClick={next}
-                className="rounded-xl px-4 py-2 bg-[#7494ec] text-white font-semibold hover:bg-[#5a7be0] disabled:opacity-50"
+                className="rounded-xl px-4 py-2 bg-[#753bd0] text-white font-semibold hover:bg-[#5f2fab] disabled:opacity-50"
               >
                 Continuar a solicitud
               </button>
@@ -1107,7 +1107,7 @@ export default function InsuranceFlowDemo({
                               }
                             }}
                           />
-                          <span className="text-xs rounded-lg px-3 py-2 bg-[#7494ec] text-white hover:bg-[#5a7be0] font-semibold">
+                          <span className="text-xs rounded-lg px-3 py-2 bg-[#753bd0] text-white hover:bg-[#5f2fab] font-semibold">
                             Subir documento
                           </span>
                         </label>
@@ -1146,7 +1146,7 @@ export default function InsuranceFlowDemo({
                               }
                             }}
                           />
-                          <span className="text-xs rounded-lg px-3 py-2 bg-[#7494ec] text-white hover:bg-[#5a7be0] font-semibold">
+                          <span className="text-xs rounded-lg px-3 py-2 bg-[#753bd0] text-white hover:bg-[#5f2fab] font-semibold">
                             Subir documento
                           </span>
                         </label>
@@ -1174,7 +1174,7 @@ export default function InsuranceFlowDemo({
                 </button>
                 <button
                   onClick={next}
-                  className="rounded-xl px-4 py-2 bg-[#7494ec] text-white font-semibold hover:bg-blue-600"
+                  className="rounded-xl px-4 py-2 bg-[#753bd0] text-white font-semibold hover:bg-[#5f2fab]"
                 >
                   Ir a cotización
                 </button>
@@ -1225,7 +1225,7 @@ export default function InsuranceFlowDemo({
               <div className="mt-4 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3">
                 <button
                   onClick={generatePDF}
-                  className="w-full sm:w-auto rounded-xl px-4 py-2 bg-[#7494ec] text-white font-semibold hover:bg-[#5a7be0]"
+                  className="w-full sm:w-auto rounded-xl px-4 py-2 bg-[#753bd0] text-white font-semibold hover:bg-[#5f2fab]"
                 >
                   Generar PDF
                 </button>
@@ -1251,9 +1251,9 @@ export default function InsuranceFlowDemo({
                 <button
                   onClick={next}
                   disabled={!generatedPDFUrl}
-                  className="rounded-2xl px-4 py-2 bg-indigo-600 text-white font-semibold hover:bg-indigo-700 disabled:opacity-50"
+                  className="rounded-2xl px-4 py-2 bg-[#753bd0] text-white font-semibold hover:bg-[#5f2fab] disabled:opacity-50"
                 >
-                  Ir a envio
+                  Ir a emisión
                 </button>
               </div>
             </div>
@@ -1270,7 +1270,7 @@ export default function InsuranceFlowDemo({
                 <button
                   onClick={next}
                   disabled={!generatedPDFUrl}
-                  className="w-1/2 rounded-xl px-4 py-3 bg-indigo-600 text-white font-semibold disabled:opacity-50"
+                  className="w-1/2 rounded-xl px-4 py-3 bg-[#753bd0] text-white font-semibold disabled:opacity-50"
                 >
                   Ir a envio
                 </button>
@@ -1369,31 +1369,28 @@ export default function InsuranceFlowDemo({
                   </option>
                 ))}
               </select>
-              <div className="mt-4 flex items-center gap-3">
-                <button onClick={prev} className="rounded-xl px-4 py-2 border border-neutral-300 hover:bg-neutral-50">
-                  Atras
-                </button>
-              </div>
             </div>
 
             {/* Simulación de cobro con Stripe */}
             {chosenPolicy && (
-              <div className="mt-6 p-4 rounded-xl border border-blue-300 bg-blue-50">
-                <h3 className="font-semibold mb-2 text-blue-800">Simulación de cobro</h3>
+              <div className="mt-6 p-4 rounded-xl border border-[#753bd0]/40 bg-[#753bd0]/5">
+                <h3 className="font-semibold mb-2 text-[#191514]">Simulación de cobro</h3>
                 <div className="mb-2 text-lg">
                   <b>Monto a cobrar:</b> {formatMoney(chosenPolicy.features.priceMonthly ?? 0)}{" "}
                   <span className="text-sm text-neutral-600">(mensual)</span>
                 </div>
                 <button
                   type="button"
-                  className="rounded-xl px-4 py-2 bg-blue-600 text-white font-semibold hover:bg-blue-700"
+                  className="rounded-xl px-4 py-2 bg-[#753bd0] text-white font-semibold hover:bg-[#5f2fab]"
                   onClick={handleSimulatedCharge}
                 >
-                  Realizar cobro simulado
+                  Realizar Cobro 
                 </button>
               </div>
             )}
-
+<button onClick={prev} className="mt-6 rounded-xl px-4 py-2 border border-neutral-300 hover:bg-neutral-50">
+                  Atras
+                </button>
             {dispatchFolio && (
               <div className="mt-4 rounded-xl border border-emerald-200 bg-emerald-50 p-4 text-emerald-800">
                 <b>Envio exitoso.</b> Folio de referencia: {dispatchFolio}

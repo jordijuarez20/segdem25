@@ -1,8 +1,5 @@
 import { stripe } from "@/lib/stripe";
 
-import {CheckoutProvider} from '@stripe/react-stripe-js/checkout';
-import {loadStripe} from '@stripe/stripe-js';
-
 export async function POST(req: Request) {
   try {
     const {
@@ -17,6 +14,20 @@ export async function POST(req: Request) {
     if (!amount || amount <= 0) {
       return new Response(JSON.stringify({ error: "Invalid amount" }), { status: 400 });
     }
+
+    // Determina la base URL del despliegue (Vercel) o usa NEXT_PUBLIC_BASE_URL como respaldo
+    const getBaseUrl = () => {
+      const configured = process.env.NEXT_PUBLIC_BASE_URL?.replace(/\/$/, "");
+      if (configured) return configured;
+      const proto = req.headers.get("x-forwarded-proto") || (req.headers.get("origin")?.startsWith("https") ? "https" : "http");
+      const host = req.headers.get("x-forwarded-host") || req.headers.get("host");
+      if (host) return `${proto}://${host}`;
+      const origin = req.headers.get("origin");
+      if (origin) return origin.replace(/\/$/, "");
+      return "http://localhost:3000";
+    };
+
+    const baseUrl = getBaseUrl();
 
     const session = await stripe.checkout.sessions.create({
       mode: "payment",
@@ -41,8 +52,10 @@ export async function POST(req: Request) {
         policyName,
         ...metadata,
       },
-      success_url: `${process.env.NEXT_PUBLIC_BASE_URL}/success?session_id={CHECKOUT_SESSION_ID}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_BASE_URL}/cancel`,
+  // Mostrar anuncio de éxito y luego redirigir desde /success a paso 1
+  success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}`,
+      // Si cancela, regresa al cancel en el mismo host
+      cancel_url: `${baseUrl}/cancel`,
     });
 
     return new Response(JSON.stringify({ id: session.id }), { status: 200 });

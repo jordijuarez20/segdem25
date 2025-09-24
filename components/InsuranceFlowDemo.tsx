@@ -787,12 +787,7 @@ export default function InsuranceFlowDemo({
               </div>
 
               <div className="flex flex-wrap gap-3 justify-end">
-                <button
-                  className="rounded-xl px-4 py-2 bg-[#753bd0] text-white font-semibold hover:bg-[#5f2fab]"
-                  onClick={next}
-                >
-                  Continuar a comparacion
-                </button>
+               
               </div>
             </div>
 
@@ -892,7 +887,14 @@ export default function InsuranceFlowDemo({
                   ))}
                 </>
               )}
+              
             </div>
+             <button
+                  className="rounded-xl px-4 py-2 bg-[#753bd0] text-white font-semibold hover:bg-[#5f2fab]"
+                  onClick={next}
+                >
+                  Continuar a comparacion
+                </button>
           </section>
         )}
 

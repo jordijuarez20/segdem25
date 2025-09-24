@@ -72,7 +72,7 @@ export default function Page() {
 
         {/* Lado Bienvenida */}
         <aside className="welcome flex flex-col items-center justify-center text-center gap-2 sm:gap-3 px-6 py-8 sm:py-10">
-          <div className="flex justify-center">
+          <div className="flex justify-center mb-6 sm:mb-8 md:mb-10">
             <Image
               src="/imagen/img1.png"
               alt="Logo"
@@ -199,6 +199,7 @@ export default function Page() {
           inset: 0;
           overflow: hidden;
           z-index: 2;
+          display: none; /* Oculta cápsula en móvil (sin animación) */
         }
         .capsule {
           position: absolute;
@@ -221,6 +222,8 @@ export default function Page() {
 
         /* En pantallas md+ la cápsula hace sweep horizontal */
         @media (min-width: 768px) {
+          /* Mostrar cápsula y animación solo en desktop/tablet */
+          .capsule-wrap { display: block; }
           .capsule {
             width: 220px;
             height: 220%;
